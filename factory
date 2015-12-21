@@ -1,0 +1,33 @@
+/**
+ * Created by afibur on 17.12.15.
+ */
+var Child =
+{
+    dotter: function (specifications) {
+        console.log("We have new born! it's a "+ specifications.color + " girl " + specifications.weight + " kg weight");
+    },
+    son: function (specifications) {
+        console.log("We have new born! it's a "+ specifications.color + " boy " + specifications.weight + " kg weight");
+    },
+    twins: function (specifications) {
+        console.log("OMG! We have new born! it's a "+ specifications.color + " twins " + specifications.weight + " kg weight");
+    }
+}
+
+function ChildFactory (color, weight) {
+    this.color = color;
+    this.weight = weight;
+}
+
+ChildFactory.prototype = {
+    constructor: Child,
+    makeDotter: function () {return new Child.dotter ({color: this.color, weight: this.weight})},
+    makeSon: function () {return new Child.son ({color: this.color, weight: this.weight})},
+    makeTwins: function () {return new Child.twins ({color: this.color, weight: this.weight})}
+}
+
+var factory = new ChildFactory('yellow', 4);
+
+factory.makeDotter()
+factory.makeSon()
+factory.makeTwins()
