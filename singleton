@@ -1,0 +1,30 @@
+/**
+ * Created by afibur on 21.12.15.
+ */
+var counter = (function(){
+    var count = 0;
+    var instance;
+
+    var getCount = function () {
+        return count;
+    }
+    var increaseCount = function () {
+        return count++;
+    }
+
+    var createInstance = function () {
+        return {
+            getCounter: getCount,
+            increaseCounter: increaseCount
+        }
+    }
+    return {
+        getInstance: function () {
+            return instance || (instance = createInstance())
+        }
+    }
+
+
+})();
+
+counter.getInstance().increaseCounter();
